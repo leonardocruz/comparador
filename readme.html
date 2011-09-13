@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta name="generator" content="HTML::TextToHTML v2.51"/>
+</head>
+<body>
+<h1><a name="section_1">comparador</a></h1>
+<p> <strong>Source archetype:</strong> jboss-jsf-weld-servlet-webapp
+</p><h2><a name="section_1_1">What is it?</a></h2>
+<p> This is your project! It's a barebones, deployable Maven 2 project to help you
+ get your foot in the door developing with Java EE 6. Specifically, this
+ project is setup to allow you to create a JSF 2.0 and CDI 1.0 application that
+ can run on Servlet Containers like Tomcat 6 and Jetty 6. You may be satisfied
+ with this combination in the long run, or you may eventually migrate to a true
+ Java EE 6 environment to leverage EJB 3.1, JPA 2.0 and other platform
+ technologies.
+</p><h2><a name="section_1_2">System requirements</a></h2>
+<p> All you need to run this project is Java 5.0 (Java SDK 1.5) or greator and
+ Maven 2.0.10 or greater. This application is setup to be run on a Servlet
+ Container. The embedded Jetty and Tomcat containers get downloaded
+ automatically by the Maven commands.
+</p><p> If you want to deploy the application to a standalone Servlet Container, then
+ you will need to set one up.
+</p><p> Please note that Maven 2 project needs to use the JBoss Maven repository
+ because there are certain Java EE API JARs that are not yet publised to the
+ Maven Central Repository (see <a href="https://jira.jboss.org/jira/browse/WELD-222">https://jira.jboss.org/jira/browse/WELD-222</a>)
+</p><h2><a name="section_1_3">Deploying the application</a></h2>
+<p> You can deploy the application without moving any files around using the
+ embedded Jetty or Tomcat containers.
+</p><p> To run the application using embedded Jetty, execute this command:
+</p><pre>
+  mvn jetty:run</pre>
+<p> To run the application using embedded Tomcat, execute this command:
+</p><pre>
+  mvn compile tomcat:run</pre>
+<p> The application will be running at the following URL:
+ 
+</p><pre>
+  <a href="http://localhost:9090/comparador">http://localhost:9090/comparador</a></pre>
+<p> To run the application on a standalone container, first execute this command:
+</p><pre>
+  mvn package</pre>
+<p> Then copy the archive target/jboss-jsf-weld-servlet-webapp.war to the hot deploy directory of
+ the container (e.g., the webapps directory of Tomcat). Of course, you also
+ need to start the container.
+</p><p> The default settings use Mojarra 2, the JSF 2 reference implementation. If you
+ want to use MyFaces 2 instead, just add the -Djsf=myfaces flag to any of the
+ commands above.
+</p><pre>
+  mvn jetty:run -Djsf=myfaces</pre>
+<p> The application will work just as before, except the JSF functionality will be
+ powered by MyFaces.
+</p><h2><a name="section_1_4">Importing the project into an IDE</a></h2>
+<p> If you created the project using the Maven 2 archetype wizard in your IDE
+ (Eclipse, NetBeans or IntelliJ IDEA), then there is nothing to do. You should
+ already have an IDE project.
+</p><p> If you created the project from the commandline using archetype:generate, then
+ you need to bring the project into your IDE. If you are using NetBeans 6.8 or
+ IntelliJ IDEA 9, then all you have to do is open the project as an existing
+ project. Both of these IDEs recognize Maven 2 projects natively.
+</p><p> To import into Eclipse, you first need to install the m2eclipse plugin. To get
+ started, add the m2eclipse update site (<a href="http://m2eclipse.sonatype.org/update/">http://m2eclipse.sonatype.org/update/</a>)
+ to Eclipse and install the m2eclipse plugin and required dependencies. Once
+ that is installed, you'll be ready to import the project into Eclipse.
+</p><pre>
+ Select File &gt; Import... and select "Import... &gt; Maven Projects" and select
+</pre>
+<p> your project directory. m2eclipse should take it from there.
+</p><p> Once in the IDE, you can execute the Maven commands through the IDE controls
+ to run the application on an embedded Servlet Container.
+</p><h2><a name="section_1_5">Downloading the sources and Javadocs</a></h2>
+<p> If you want to be able to debug into the source code or look at the Javadocs
+ of any library in the project, you can run either of the following two
+ commands to pull them into your local repository. The IDE should then detect
+ them.
+</p><pre>
+  mvn dependency:sources
+  mvn dependency:resolve -Dclassifier=javadoc</pre>
+<h2><a name="section_1_6">Resources</a></h2>
+<p> Weld archetypes:
+</p><ul>
+  <li>Quickstart:        <a href="http://seamframework.org/Documentation/WeldQuickstartForMavenUsers">http://seamframework.org/Documentation/WeldQuickstartForMavenUsers</a>
+  </li><li>Issue tracker:     <a href="https://jira.jboss.org/jira/browse/WELDRAD">https://jira.jboss.org/jira/browse/WELDRAD</a>
+  </li><li>Source code:       <a href="http://anonsvn.jboss.org/repos/weld/archetypes">http://anonsvn.jboss.org/repos/weld/archetypes</a>
+  </li><li>Forums:            <a href="http://seamframework.org/Community/WeldUsers">http://seamframework.org/Community/WeldUsers</a>
+ JSR-299 overview:     <a href="http://seamframework.org/Weld">http://seamframework.org/Weld</a>
+ JSF community site:   <a href="http://www.javaserverfaces.org">http://www.javaserverfaces.org</a>
+</li></ul>
+
+</body>
+</html>
