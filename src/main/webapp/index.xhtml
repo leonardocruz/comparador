@@ -1,49 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-   xmlns:ui="http://java.sun.com/jsf/facelets"
-   xmlns:f="http://java.sun.com/jsf/core"
-   xmlns:h="http://java.sun.com/jsf/html"
-   template="/WEB-INF/templates/default.xhtml">
-   <ui:define name="content">
-      <h1>Hello World!</h1>
-      <p>Your CDI bean <code>HelloWorld</code> says <span style="color: blue;">#{helloWorld.text}</span> using the Unified EL.</p>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	<ui:define name="content">
+		<h1>Hello World!</h1>
+		<p>
+			Your CDI bean
+			<code>HelloWorld</code>
+			says <span style="color: blue;">#{helloWorld.text}</span> using the
+			Unified EL.
+		</p>
 
-      <h:form id="bv">
-         <h2>Bean Validation examples</h2>
-         <p>Enforces annotation-based constraints defined on the model class.</p>
-         <table>
-            <tr>
-               <th style="text-align: right;">
-                  <h:outputLabel for="letters" value="Letters:"/>
-               </th>
-               <td>
-                  <h:inputText id="letters" value="#{helloWorld.letters}"/>
-                  <h:message for="letters" errorClass="invalid"/>
-               </td>
-            </tr>
-            <tr>
-               <th style="text-align: right;">
-                  <h:outputLabel for="numbers" value="Numbers:"/>
-               </th>
-               <td>
-                  <h:inputText id="numbers" value="#{helloWorld.numbers}"/>
-                  <h:message for="numbers" errorClass="invalid"/>
-               </td>
-            </tr>
-            <tr>
-               <th style="text-align: right;">
-                  <h:outputLabel for="email" value="Email:"/>
-               </th>
-               <td>
-                  <h:inputText id="email" value="#{helloWorld.email}"/>
-                  <h:message for="email" errorClass="invalid"/>
-               </td>
-            </tr>
-         </table>
-         <p>
-            <h:commandButton id="check" value="Check values"/>
-            <h:outputText value=" All clear!" rendered="#{facesContext.postback and empty facesContext.messageList}" style="color: green;"/>
-         </p>
-      </h:form>
-   </ui:define>
+		<h:form id="bv">
+			<h:outputText value="Nome: " />
+			<h:inputText value="#{helloWorld.letters}">
+				<a4j:ajax event="keyup" render="out" />
+			</h:inputText>
+			<h:outputText value="#{helloWorld.letters}" id="out" />
+			<br />
+			<br />
+			<h:outputText value="Email: " />
+			<h:inputText value="#{helloWorld.email}" id="email1"
+				validatorMessage="bad email">
+				<f:validateRegex
+					pattern="^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+)*$"></f:validateRegex>
+				
+			</h:inputText>
+			<rich:message for="email1" />
+			<br />
+			<br />
+
+			<h:outputText value="Age: " />
+			<h:inputText value="#{helloWorld.numbers}" id="age">
+				<f:validateLongRange minimum="18" maximum="99" />
+				
+			</h:inputText>
+			<rich:message for="age" />
+
+
+			<h2>Bean Validation examples</h2>
+			<p>Enforces annotation-based constraints defined on the model
+				class.</p>
+			<table>
+				<tr>
+					<th style="text-align: right;"><h:outputLabel for="letters"
+							value="Letters:" /></th>
+					<td><h:inputText id="letters" value="#{helloWorld.letters}" />
+						<h:message for="letters" errorClass="invalid" /></td>
+				</tr>
+				<tr>
+					<th style="text-align: right;"><h:outputLabel for="numbers"
+							value="Numbers:" /></th>
+					<td><h:inputText id="numbers" value="#{helloWorld.numbers}" />
+						<h:message for="numbers" errorClass="invalid" /></td>
+				</tr>
+				<tr>
+					<th style="text-align: right;"><h:outputLabel for="email"
+							value="Email:" /></th>
+					<td><h:inputText id="email" value="#{helloWorld.email}" /> <h:message
+							for="email" errorClass="invalid" /></td>
+				</tr>
+			</table>
+			<p>
+				<h:commandButton id="check" value="Check values" />
+				<h:outputText value=" All clear!"
+					rendered="#{facesContext.postback and empty facesContext.messageList}"
+					style="color: green;" />
+			</p>
+		</h:form>
+	</ui:define>
 </ui:composition>

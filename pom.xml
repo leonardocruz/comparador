@@ -1,357 +1,370 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-   <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-   <groupId>br.com.cancompare</groupId>
-   <artifactId>comparador</artifactId>
-   <version>0.0.1-SNAPSHOT</version>
-   <packaging>war</packaging>
+	<groupId>br.com.cancompare</groupId>
+	<artifactId>comparador</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 
-   <name>JSF and CDI webapp project</name>
-   <description>A starter JSF and CDI webapp project that targets Servlet containers, generated from the jboss-jsf-weld-servlet-webapp archetype</description>
+	<name>JSF and CDI webapp project</name>
+	<description>A starter JSF and CDI webapp project that targets Servlet containers, generated from the jboss-jsf-weld-servlet-webapp archetype</description>
 
-   <properties>
-      <version.weld-servlet>1.1.0.Final</version.weld-servlet>
-      <version.arquillian>1.0.0.Alpha4</version.arquillian>
-      <version.mojarra>2.0.3</version.mojarra>
-      <version.myfaces>2.0.3</version.myfaces>
+	<properties>
+		<version.weld-servlet>1.1.0.Final</version.weld-servlet>
+		<version.arquillian>1.0.0.Alpha4</version.arquillian>
+		<version.mojarra>2.0.3</version.mojarra>
+		<version.myfaces>2.0.3</version.myfaces>
 
-      <!--
-         Explicitly declaring the source encoding eliminates the following message:
-         [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-      -->
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-   </properties>
+		<!-- Explicitly declaring the source encoding eliminates the following 
+			message: [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
+			resources, i.e. build is platform dependent! -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<org.richfaces.bom.version>4.0.0.Final</org.richfaces.bom.version>
+	</properties>
 
-   <repositories>
-      <!-- The JBoss public Nexus repository is a composite repository of several major repositories -->
-      <!-- see http://community.jboss.org/wiki/MavenGettingStarted-Users -->
-      <!-- At the time of writing, Arquillian and the JBoss Java EE specification POMs are only in the JBoss Community public repository (not Maven central) -->
-      <repository>
-         <id>jboss-public-repository</id>
-         <name>JBoss Repository</name>
-         <url>https://repository.jboss.org/nexus/content/groups/public</url>
-         <releases>
-            <updatePolicy>never</updatePolicy>
-         </releases>
-         <snapshots>
-            <updatePolicy>daily</updatePolicy>
-         </snapshots>
-      </repository>
-   </repositories>
+	<repositories>
+		<!-- The JBoss public Nexus repository is a composite repository of several 
+			major repositories -->
+		<!-- see http://community.jboss.org/wiki/MavenGettingStarted-Users -->
+		<!-- At the time of writing, Arquillian and the JBoss Java EE specification 
+			POMs are only in the JBoss Community public repository (not Maven central) -->
+		<repository>
+			<id>jboss-public-repository</id>
+			<name>JBoss Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public</url>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<updatePolicy>daily</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
 
-   <pluginRepositories>
-      <pluginRepository>
-         <id>jboss-public-repository</id>
-         <name>JBoss Repository</name>
-         <url>https://repository.jboss.org/nexus/content/groups/public</url>
-         <releases>
-            <updatePolicy>never</updatePolicy>
-         </releases>
-         <snapshots>
-            <enabled>false</enabled>
-            <updatePolicy>daily</updatePolicy>
-         </snapshots>
-      </pluginRepository>
-   </pluginRepositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jboss-public-repository</id>
+			<name>JBoss Repository</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public</url>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
-   <dependencyManagement>
-      <dependencies>
-         <!-- Import scope will provide versions for dependencies below. -->
-         <dependency>
-            <groupId>org.jboss.weld.servlet</groupId>
-            <artifactId>weld-servlet-parent</artifactId>
-            <version>${version.weld-servlet}</version>
-            <type>pom</type>
-            <scope>import</scope>
-         </dependency>
-         <dependency>
-         	<groupId>org.jboss.seam.persistence</groupId>
-         	<artifactId>seam-persistence</artifactId>
-         	<version>3.0.0.Final</version>
-         </dependency>
-      </dependencies>
-   </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<!-- Import scope will provide versions for dependencies below. -->
+			<dependency>
+				<groupId>org.jboss.weld.servlet</groupId>
+				<artifactId>weld-servlet-parent</artifactId>
+				<version>${version.weld-servlet}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.seam.persistence</groupId>
+				<artifactId>seam-persistence</artifactId>
+				<version>3.0.0.Final</version>
+			</dependency>
 
-   <dependencies>
 
-      <!-- Common to JEE and Servlet containers -->
-      <dependency>
-         <groupId>javax.enterprise</groupId>
-         <artifactId>cdi-api</artifactId>
-         <scope>provided</scope>
-      </dependency>
+			<dependency>
+				<groupId>org.richfaces</groupId>
+				<artifactId>richfaces-bom</artifactId>
+				<version>${org.richfaces.bom.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-      <dependency>
-         <groupId>javax.annotation</groupId>
-         <artifactId>jsr250-api</artifactId>
-         <scope>provided</scope>
-      </dependency>
+	<dependencies>
 
-      <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>servlet-api</artifactId>
-         <version>2.5</version>
-         <scope>provided</scope>
-      </dependency>
+		<!-- Common to JEE and Servlet containers -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
-      <!--
-      <dependency>
-         <groupId>javax.el</groupId>
-         <artifactId>el-api</artifactId>
-         <version>2.2.1-b04</version>
-         <scope>compile</scope>
-      </dependency>
-        
-      <dependency>
-         <groupId>org.glassfish.web</groupId>
-         <artifactId>el-impl</artifactId>
-         <version>2.2.1-b04</version>
-         <scope>runtime</scope>
-      </dependency>
-      -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>jsr250-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
-      <dependency>
-         <groupId>org.jboss.weld.servlet</groupId>
-         <artifactId>weld-servlet</artifactId>
-         <scope>runtime</scope>
-      </dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
 
-      <!-- Bean Validation API (JSR 303) -->
-      <dependency>
-         <groupId>javax.validation</groupId>
-         <artifactId>validation-api</artifactId>
-      </dependency>
+		<!-- <dependency> <groupId>javax.el</groupId> <artifactId>el-api</artifactId> 
+			<version>2.2.1-b04</version> <scope>compile</scope> </dependency> <dependency> 
+			<groupId>org.glassfish.web</groupId> <artifactId>el-impl</artifactId> <version>2.2.1-b04</version> 
+			<scope>runtime</scope> </dependency> -->
 
-      <!-- Bean Validation Implementation -->
-      <!-- Provides portable constraints such as @NotEmpty, @Email and @Url -->
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
-      <dependency>
-         <groupId>junit</groupId>
-         <artifactId>junit</artifactId>
-         <version>4.8.1</version>
-         <scope>test</scope>
-      </dependency>
+		<!-- Bean Validation API (JSR 303) -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
 
-      <dependency>
-         <groupId>org.jboss.arquillian</groupId>
-         <artifactId>arquillian-junit</artifactId>
-         <version>${version.arquillian}</version>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-      	<groupId>org.jboss.seam.international</groupId>
-      	<artifactId>seam-international</artifactId>
-      	<version>3.0.0.Final</version>
-      	<scope>provided</scope>
-      </dependency>
-      <dependency>
-      	<groupId>org.jboss.seam.wicket</groupId>
-      	<artifactId>seam-wicket</artifactId>
-      	<version>3.0.0.Final</version>
-      	<scope>provided</scope>
-      </dependency>
-      <dependency>
-      	<groupId>org.jboss.seam.solder</groupId>
-      	<artifactId>seam-solder</artifactId>
-      	<version>3.0.0.Final</version>
-      	<scope>provided</scope>
-      </dependency>
-      <dependency>
-      	<groupId>org.jboss.seam.security</groupId>
-      	<artifactId>seam-security</artifactId>
-      	<version>3.0.0.Final</version>
-      	<scope>provided</scope>
-      </dependency>
-      <dependency>
-      	<groupId>org.jboss.seam.validation</groupId>
-      	<artifactId>seam-validation</artifactId>
-      	<version>3.0.0.Final</version>
-      	<scope>provided</scope>
-      </dependency>
-      <dependency>
-      	<groupId>org.jboss.seam.persistence</groupId>
-      	<artifactId>seam-persistence</artifactId>
-      	<scope>provided</scope>
-      </dependency>
-      <dependency>
-      	<groupId>org.jboss.seam.catch</groupId>
-      	<artifactId>seam-catch</artifactId>
-      	<version>3.0.0.Final</version>
-      	<scope>provided</scope>
-      </dependency>
-      <dependency>
-      	<groupId>javax.persistence</groupId>
-      	<artifactId>persistence-api</artifactId>
-      </dependency>
-      <dependency>
-      	<groupId>org.jboss.seam.servlet</groupId>
-      	<artifactId>seam-servlet</artifactId>
-      	<version>3.0.0.Final</version>
-      	<scope>provided</scope>
-      </dependency>
-      <dependency>
-      	<groupId>org.apache.wicket</groupId>
-      	<artifactId>wicket-extensions</artifactId>
-      	<version>1.5.0</version>
-      	<scope>provided</scope>
-      </dependency>
-      <dependency>
-      	<groupId>org.hibernate</groupId>
-      	<artifactId>hibernate-validator</artifactId>
-      	<version>4.2.0.Final</version>
-      </dependency>
-   </dependencies>
+		<!-- Bean Validation Implementation -->
+		<!-- Provides portable constraints such as @NotEmpty, @Email and @Url -->
 
-   <build>
-      <finalName>${project.artifactId}</finalName>
-      <plugins>
-         <!-- Compiler plugin enforces Java 1.5 compatibility -->
-         <plugin>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>2.3.1</version>
-            <configuration>
-               <source>1.5</source>
-               <target>1.5</target>
-            </configuration>
-         </plugin>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
 
-         <!-- Embedded Jetty (jetty:run) -->
-         <plugin>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>maven-jetty-plugin</artifactId>
-            <version>6.1.26</version>
-            <configuration>
-               <!-- Delete this block to have Jetty run default port (8080) -->
-               <connectors>
-                  <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                     <port>9090</port>
-                  </connector>
-               </connectors>
-               <!-- force friendly name instead of artifact name + version -->
-               <contextPath>${project.build.finalName}</contextPath>
-               <!-- Where the BeanManager is constructed. This is where you'll declare datasources. -->
-               <jettyEnvXml>${project.basedir}/src/test/resources/jetty-env.xml</jettyEnvXml>
-               <!-- This parameter will auto-deploy modified classes. -->
-               <!-- You can save changes in a file or class and refresh your browser to view the changes. -->
-               <scanIntervalSeconds>3</scanIntervalSeconds>
-            </configuration>
-         </plugin>
+		<dependency>
+			<groupId>org.jboss.arquillian</groupId>
+			<artifactId>arquillian-junit</artifactId>
+			<version>${version.arquillian}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.seam.international</groupId>
+			<artifactId>seam-international</artifactId>
+			<version>3.0.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.seam.wicket</groupId>
+			<artifactId>seam-wicket</artifactId>
+			<version>3.0.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.seam.solder</groupId>
+			<artifactId>seam-solder</artifactId>
+			<version>3.0.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.seam.security</groupId>
+			<artifactId>seam-security</artifactId>
+			<version>3.0.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.seam.validation</groupId>
+			<artifactId>seam-validation</artifactId>
+			<version>3.0.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.seam.persistence</groupId>
+			<artifactId>seam-persistence</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.seam.catch</groupId>
+			<artifactId>seam-catch</artifactId>
+			<version>3.0.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.seam.servlet</groupId>
+			<artifactId>seam-servlet</artifactId>
+			<version>3.0.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-extensions</artifactId>
+			<version>1.5.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.richfaces.ui</groupId>
+			<artifactId>richfaces-components-ui</artifactId>
+			<version>${org.richfaces.bom.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.richfaces.core</groupId>
+			<artifactId>richfaces-core-impl</artifactId>
+			<version>${org.richfaces.bom.version}</version>
+		</dependency>
+	</dependencies>
 
-         <!-- Embedded Tomcat (package tomcat:run) -->
-         <!-- Standalone Tomcat (package tomcat:deploy) -->
-         <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>tomcat-maven-plugin</artifactId>
-            <version>1.0</version>
-            <configuration>
-               <path>/${project.build.finalName}</path>
-               <!-- Embedded port -->
-               <port>9090</port>
-               <!--
-                  The default authentication credentials for remote deployment are username "admin" with no password To
-                  override credentials, define a server in settings.xml and activate it using the <server> element
-               -->
-               <url>http://localhost:9090/manager</url>
-            </configuration>
-         </plugin>
-      </plugins>
-   </build>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<!-- Compiler plugin enforces Java 1.5 compatibility -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
 
-   <profiles>
-      <profile>
-         <id>arq-weld-embedded</id>
-         <activation>
-            <property>
-               <name>!arquillian</name>
-            </property>
-         </activation>
-         <dependencies>
-            <dependency>
-               <groupId>org.jboss.weld.arquillian.container</groupId>
-               <artifactId>arquillian-weld-ee-embedded-1.1</artifactId>
-               <scope>test</scope>
-            </dependency>
-            <!-- Arquillian Weld EE Embedded requires the EL and EJB 3.1 APIs; Weld runtime provided by weld-servlet -->
-            <dependency>
-               <groupId>javax.el</groupId>
-               <artifactId>el-api</artifactId>
-               <!-- remove scope if bundling EL libraries w/ webapp -->
-               <scope>test</scope>
-            </dependency>
-            <dependency>
-               <groupId>org.jboss.spec.javax.ejb</groupId>
-               <artifactId>jboss-ejb-api_3.1_spec</artifactId>
-               <version>1.0.0.Final</version>
-               <scope>test</scope>
-            </dependency>
-         </dependencies>
-      </profile>
+			<!-- Embedded Jetty (jetty:run) -->
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.26</version>
+				<configuration>
+					<!-- Delete this block to have Jetty run default port (8080) -->
+					<connectors>
+						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<port>9090</port>
+						</connector>
+					</connectors>
+					<!-- force friendly name instead of artifact name + version -->
+					<contextPath>${project.build.finalName}</contextPath>
+					<!-- Where the BeanManager is constructed. This is where you'll declare 
+						datasources. -->
+					<jettyEnvXml>${project.basedir}/src/test/resources/jetty-env.xml</jettyEnvXml>
+					<!-- This parameter will auto-deploy modified classes. -->
+					<!-- You can save changes in a file or class and refresh your browser 
+						to view the changes. -->
+					<scanIntervalSeconds>3</scanIntervalSeconds>
+				</configuration>
+			</plugin>
 
-      <profile>
-         <!-- JSF 2.0 Reference Implementation-->
-         <id>mojarra</id>
-         <activation>
-            <property>
-               <name>!jsf</name>
-            </property>
-         </activation>
-         <dependencies>
-            <dependency>
-               <groupId>com.sun.faces</groupId>
-               <artifactId>jsf-api</artifactId>
-               <version>${version.mojarra}</version>
-            </dependency>
-            <dependency>
-               <groupId>com.sun.faces</groupId>
-               <artifactId>jsf-impl</artifactId>
-               <version>${version.mojarra}</version>
-               <scope>runtime</scope>
-            </dependency>
-         </dependencies>
-      </profile>
+			<!-- Embedded Tomcat (package tomcat:run) -->
+			<!-- Standalone Tomcat (package tomcat:deploy) -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.0</version>
+				<configuration>
+					<path>/${project.build.finalName}</path>
+					<!-- Embedded port -->
+					<port>9090</port>
+					<!-- The default authentication credentials for remote deployment are 
+						username "admin" with no password To override credentials, define a server 
+						in settings.xml and activate it using the <server> element -->
+					<url>http://localhost:9090/manager</url>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-      <profile>
-         <!-- JSF 2.0 Implementation-->
-         <id>myfaces</id>
-         <activation>
-            <property>
-               <name>jsf</name>
-               <value>myfaces</value>
-            </property>
-         </activation>
-         <dependencies>
-            <dependency>
-               <groupId>org.apache.myfaces.core</groupId>
-               <artifactId>myfaces-api</artifactId>
-               <version>${version.myfaces}</version>
-            </dependency>
-            <dependency>
-               <groupId>org.apache.myfaces.core</groupId>
-               <artifactId>myfaces-impl</artifactId>
-               <version>${version.myfaces}</version>
-               <scope>runtime</scope>
-            </dependency>
-         </dependencies>
-      </profile>
+	<profiles>
+		<profile>
+			<id>arq-weld-embedded</id>
+			<activation>
+				<property>
+					<name>!arquillian</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.jboss.weld.arquillian.container</groupId>
+					<artifactId>arquillian-weld-ee-embedded-1.1</artifactId>
+					<scope>test</scope>
+				</dependency>
+				<!-- Arquillian Weld EE Embedded requires the EL and EJB 3.1 APIs; Weld 
+					runtime provided by weld-servlet -->
+				<dependency>
+					<groupId>javax.el</groupId>
+					<artifactId>el-api</artifactId>
+					<!-- remove scope if bundling EL libraries w/ webapp -->
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.jboss.spec.javax.ejb</groupId>
+					<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+					<version>1.0.0.Final</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
 
-      <profile>
-         <!-- JAX-RS 1.1 Reference Implementation-->
-         <id>jersey</id>
-         <activation>
-            <property>
-               <name>!jaxrs</name>
-            </property>
-         </activation>
-         <dependencies>
-            <dependency>
-               <groupId>com.sun.jersey</groupId>
-               <artifactId>jersey-server</artifactId>
-               <version>1.4</version>
-            </dependency>
-         </dependencies>
-      </profile>
+		<profile>
+			<!-- JSF 2.0 Reference Implementation -->
+			<id>mojarra</id>
+			<activation>
+				<property>
+					<name>!jsf</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.sun.faces</groupId>
+					<artifactId>jsf-api</artifactId>
+					<version>${version.mojarra}</version>
+				</dependency>
+				<dependency>
+					<groupId>com.sun.faces</groupId>
+					<artifactId>jsf-impl</artifactId>
+					<version>${version.mojarra}</version>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+		</profile>
 
-      <!-- TODO add profile for RESTEasy -->
-   </profiles>
+		<profile>
+			<!-- JSF 2.0 Implementation -->
+			<id>myfaces</id>
+			<activation>
+				<property>
+					<name>jsf</name>
+					<value>myfaces</value>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.apache.myfaces.core</groupId>
+					<artifactId>myfaces-api</artifactId>
+					<version>${version.myfaces}</version>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.myfaces.core</groupId>
+					<artifactId>myfaces-impl</artifactId>
+					<version>${version.myfaces}</version>
+					<scope>runtime</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<profile>
+			<!-- JAX-RS 1.1 Reference Implementation -->
+			<id>jersey</id>
+			<activation>
+				<property>
+					<name>!jaxrs</name>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.sun.jersey</groupId>
+					<artifactId>jersey-server</artifactId>
+					<version>1.4</version>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<!-- TODO add profile for RESTEasy -->
+	</profiles>
 </project>
