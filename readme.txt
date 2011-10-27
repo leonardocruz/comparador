@@ -1,4 +1,4 @@
- comparador joao Léo
+ comparador
  +++++++++++++++++++++++++++++++++
 
  #Source archetype:# jboss-jsf-weld-servlet-webapp
