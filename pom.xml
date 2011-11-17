@@ -41,6 +41,13 @@
 				<updatePolicy>daily</updatePolicy>
 			</snapshots>
 		</repository>
+		
+	    <repository>  
+       		<id>prime-repo</id>  
+       		<name>PrimeFaces Maven Repository</name>  
+       		<url>http://repository.primefaces.org</url>  
+       		<layout>default</layout>  			
+    </repository>  
 	</repositories>
 
 	<pluginRepositories>
@@ -55,7 +62,7 @@
 				<enabled>false</enabled>
 				<updatePolicy>daily</updatePolicy>
 			</snapshots>
-		</pluginRepository>
+		</pluginRepository>	
 	</pluginRepositories>
 
 	<dependencyManagement>
@@ -74,19 +81,23 @@
 				<version>3.0.0.Final</version>
 			</dependency>
 
-
 			<dependency>
-				<groupId>org.richfaces</groupId>
-				<artifactId>richfaces-bom</artifactId>
-				<version>${org.richfaces.bom.version}</version>
-				<scope>import</scope>
-				<type>pom</type>
+				<groupId>org.primefaces</groupId>
+				<artifactId>primefaces</artifactId>
+				<version>3.0.M4</version>
 			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
-
+			
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>3.0.M4</version>
+		</dependency>
+		
 		<!-- Common to JEE and Servlet containers -->
 		<dependency>
 			<groupId>javax.enterprise</groupId>
@@ -368,3 +379,4 @@
 		<!-- TODO add profile for RESTEasy -->
 	</profiles>
 </project>
+	
